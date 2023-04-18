@@ -22,7 +22,7 @@ import { prisma } from "~/server/db";
 interface AuthContext {
   auth: SignedInAuthObject | SignedOutAuthObject;
 }
-type CreateContextOptions = Record<string, never>;
+// type CreateContextOptions = Record<string, never>;
 
 /**
  * This helper generates the "internals" for a tRPC context. If you need to use it, you can export
@@ -47,7 +47,7 @@ const createInnerTRPCContext = ({ auth }: AuthContext ) => {
  *
  * @see https://trpc.io/docs/context
  */
-export const createTRPCContext = async (opts: CreateNextContextOptions) => {
+export const createTRPCContext = (opts: CreateNextContextOptions) => {
   return createInnerTRPCContext({ auth: getAuth(opts.req) });
 };
 
